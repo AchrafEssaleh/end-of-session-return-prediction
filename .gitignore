@@ -12,3 +12,6 @@ wheels/
 # Data
 data/raw/*
 data/processed/*
+
+#mac 
+.DS_Store
