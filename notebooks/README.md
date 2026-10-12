@@ -26,6 +26,16 @@
 
 ## feature_engineering.ipynb : (IN PROGRESS) 
 
-Next steps:
-- Study correlation/autocorrelation between r_i's  &check for momentum (trend continuation) v.s mean reversion in the morning returns to decide if a trend feature is worth building or not 
-- Build the rest of the feature set (cumulative return , signed features per Module 1's leverage effect reasoning... ) before moving to `modeling.ipynb` :) 
+## feature_engineering.ipynb: IN PROGRESS
+
+**Autocorrelation study (done)**
+- Removed 29 rows with corrupted values (23 of 29 in r0, the rest in r1 to r3) before computing correlations.
+- Raw returns lag 1: correlation -0.0056. Statistically real (huge sample) but explains 0.003% of variance meaning direction of past returns is not predictable
+- Absolute returns, lag 1: +0.22 (Pearson) and +0.23 (Spearman)...Volatility clustering is real: size is predictable (direction isn't )
+- Absolute returns, lags 1 to 52: fast decay until lag  approx 10 then slow decay until approx 45 ( meaning Long memory) The end of the curve is partly a composition artifact (only opening returns are compared)
+
+**Next steps**
+1. Separate row level volatility from within row clustering: subtract each row's mean |r| and recompute the curv
+2. Build log spaced realized volatility windows (last 1, 3, 6, 12, 24 returns and the full morning), plus ratios short/long.
+3. Add signed features (cumulative return) and keep r52 as a standalone feature
+4. Validate the choices with GroupKFold in `modeling.ipynb`.

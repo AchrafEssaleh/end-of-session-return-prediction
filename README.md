@@ -1,4 +1,4 @@
-## Problem Framing
+## ONGOING /!\/!\
 
 The CFM challenge focuses on predicting the direction of US equity returns during the final two hours of the trading session (2:00 pm to 4:00 pm). This period is relevant for large scale trade execution due to its market liquidity and potential execution cost advantages.
 
